@@ -8,11 +8,8 @@ function getRandomInteger (a, b) {
   return Math.floor(result);
 }
 
-function checkStringLength (string, length) {
-  return string.length <= length;
-}
+const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
-getRandomInteger();
 checkStringLength();
 
 const COUNT = 25;
@@ -27,20 +24,14 @@ const DISCRIPTIONS = [
 
 const creatRandomItem = (arr) => arr[getRandomInteger(0, arr.length - 1)];
 
-const createPost = (postId) => {
-  const post = [];
+const createPost = (id) => ({
+  id: id,
+  url: `photos/ ${ id } .jpg`,
+  description: creatRandomItem(DISCRIPTIONS),
+  likes: getRandomInteger(15, 200),
+  comments: getRandomInteger(0, 200),
+});
 
-  for (let i = 1; i <= postId; i++) {
-    post.push({
-      id: i,
-      url: `photos/ ${ i } .jpg`,
-      description: creatRandomItem(DISCRIPTIONS),
-      likes: getRandomInteger(15, 200),
-      comments: getRandomInteger(0, 200),
-    });
-  }
+const similarPost = Array.from({length: COUNT}, createPost);
 
-  return post;
-};
-
-createPost();
+similarPost();
