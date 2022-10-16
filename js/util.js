@@ -10,8 +10,6 @@ function getRandomInteger (a, b) {
 
 const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
-checkStringLength();
-
 const creatRandomItem = (arr) => arr[getRandomInteger(0, arr.length - 1)];
 
 export {getRandomInteger, creatRandomItem};

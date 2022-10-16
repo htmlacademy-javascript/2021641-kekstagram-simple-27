@@ -12,12 +12,11 @@ const DISCRIPTIONS = [
 
 const createPost = (id) => ({
   id: id,
-  url: `photos/ ${ id } .jpg`,
+  url: `photos/${ id }.jpg`,
   description: creatRandomItem(DISCRIPTIONS),
   likes: getRandomInteger(15, 200),
   comments: getRandomInteger(0, 200),
 });
 
-const similarPost = Array.from({length: COUNT}, createPost);
+const similarPosts = () => Array.from({length: COUNT}, (item, index) => createPost(index + 1));
 
-similarPost();
