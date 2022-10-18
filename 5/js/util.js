@@ -12,4 +12,4 @@ const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
 const creatRandomItem = (arr) => arr[getRandomInteger(0, arr.length - 1)];
 
-export {getRandomInteger, creatRandomItem};
+export {getRandomInteger, creatRandomItem, checkStringLength};

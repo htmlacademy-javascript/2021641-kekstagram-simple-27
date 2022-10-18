@@ -18,5 +18,6 @@ const createPost = (id) => ({
   comments: getRandomInteger(0, 200),
 });
 
-const similarPosts = () => Array.from({length: COUNT}, (item, index) => createPost(index + 1));
+const similarPosts = Array.from({length: COUNT}, (item, index) => createPost(index + 1));
 
+export {similarPosts};
