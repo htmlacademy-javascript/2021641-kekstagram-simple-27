@@ -1,4 +1,4 @@
-import './util.js';
-import './mock.js';
-import './render-posts.js';
+import {similarPosts} from './mock.js';
+import {renderPosts} from './render-posts.js';
 
+renderPosts(similarPosts);
