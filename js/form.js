@@ -5,7 +5,7 @@ const overlay = document.querySelector('.img-upload__overlay');
 const cancelButton = document.querySelector('#upload-cancel');
 const fileField = document.querySelector('#upload-file');
 const commentField = document.querySelector('.text__description');
-const body = document.querySelector('.body');
+const body = document.querySelector('body');
 
 const openModal = () => {
   overlay.classList.remove('hidden');
