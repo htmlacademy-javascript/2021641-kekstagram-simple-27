@@ -1,4 +1,6 @@
 import {isEscapeKey} from './util.js';
+import {resetScale} from './image-scale.js';
+import {resetEffect} from './image-effect.js';
 
 const form = document.querySelector('.img-upload__form');
 const overlay = document.querySelector('.img-upload__overlay');
@@ -15,6 +17,8 @@ const openModal = () => {
 
 const closeModal = () => {
   form.reset();
+  resetScale();
+  resetEffect();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onEscKeyDown);
