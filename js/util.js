@@ -8,10 +8,10 @@ function getRandomInteger (a, b) {
   return Math.floor(result);
 }
 
-const checkStringLength = (string, maxLength) => string.length <= maxLength;
-
 const creatRandomItem = (arr) => arr[getRandomInteger(0, arr.length - 1)];
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export {getRandomInteger, creatRandomItem, checkStringLength, isEscapeKey};
+const getTemplateElement = (parent, templateId, elementClass) => parent.querySelector(`#${templateId}`).content.querySelector(`.${elementClass}`);
+
+export {getRandomInteger, creatRandomItem, isEscapeKey, getTemplateElement};

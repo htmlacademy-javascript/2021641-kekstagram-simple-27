@@ -1,6 +1,9 @@
-import {similarPosts} from './mock.js';
 import {renderPosts} from './render-posts.js';
-import './form.js';
+import {closeModal, setFormSubmit} from './form.js';
+import {getData} from './api.js';
 
-renderPosts(similarPosts);
+getData((posts) => {
+  renderPosts(posts);
+});
 
+setFormSubmit(closeModal);
