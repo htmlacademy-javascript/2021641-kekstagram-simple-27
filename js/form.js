@@ -15,7 +15,7 @@ const submitButton = document.querySelector('.img-upload__submit');
 const openModal = () => {
   overlay.classList.remove('hidden');
   body.classList.add('modal-open');
-  document.addEventListener('keydown', onEscKeyDown);
+  document.addEventListener('keydown', onPushEscToClosePopup);
 };
 
 const closeModal = () => {
@@ -24,12 +24,12 @@ const closeModal = () => {
   resetEffect();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onEscKeyDown);
+  document.removeEventListener('keydown', onPushEscToClosePopup);
 };
 
 const isTextFieldFocused = () => document.activeElement === commentField;
 
-function onEscKeyDown(evt) {
+function onPushEscToClosePopup(evt) {
   if(isEscapeKey(evt) && !isTextFieldFocused()) {
     evt.preventDefault();
     closeModal();
@@ -54,30 +54,29 @@ const unblockSubmitButton = () => {
   submitButton.textContent = 'Сохранить';
 };
 
-const setFormSubmit = () => {
-  form.addEventListener('submit', (evt) => {
-    evt.preventDefault();
 
-    const formData = new FormData(evt.target);
-    blockSubmitButton();
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
 
-    const onSuccess = () => {
-      closeModal();
-      unblockSubmitButton();
-      openUploadMessagePopup('success');
-    };
+  const formData = new FormData(evt.target);
+  blockSubmitButton();
 
-    const onError = () => {
-      closeModal();
-      unblockSubmitButton();
-      openUploadMessagePopup('error');
-    };
+  const onSuccess = () => {
+    closeModal();
+    unblockSubmitButton();
+    openUploadMessagePopup('success');
+  };
 
-    sendData(formData, onSuccess, onError);
-  });
-};
+  const onError = () => {
+    unblockSubmitButton();
+    openUploadMessagePopup('error');
+  };
+
+  sendData(formData, onSuccess, onError);
+});
+
 
 fileField.addEventListener('change', onFileInputChange);
 cancelButton.addEventListener('click', onCancelClick);
 
-export {setFormSubmit, closeModal};
+export {closeModal, onPushEscToClosePopup};
